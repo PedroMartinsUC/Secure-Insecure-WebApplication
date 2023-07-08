@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DDSS PA2 - Part 1.2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+
+            <h1>Design and Development of Secure Software</h1>
+            <h2>Practical Assignment #2 - Part 1.2 </h2>
+            <div align="center">
+                DISCLAIMER: This code is to be used in the scope of the <em>DDSS</em> course.
+                <b>Important:</b> these sources are merely suggestions of implementations. 
+                You should modify everything you deem as necessary and be responsible for all the content that is delivered.
+                <em>The contents of this repository do not replace the proper reading of the assignment description.</em>
+            </div>
+            <br>
+            <br>
+
+            <form action="/part2_correct.html">
+                <table  style="width: 500px ; background-color:#f19191" border="1" cellpadding="1" >
+                    <thead>
+                        <tr>
+                            <th><b>Part 2.1 - Correct Form</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><textarea style="width: 100%; height: 100px" placeholder="Enter Text" name="c_text" required> </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right"><button type="submit">Submit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form> 
+
+            <br>
+            <br>
+
+            <table  style="width: 500px" border="1" cellpadding="1" >
+                <thead>
+                    <tr>
+                        <th><b>Output Box</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            {% for message in variable %}
+                                <li>{{message[2]}}</li>
+                            {% endfor %}
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

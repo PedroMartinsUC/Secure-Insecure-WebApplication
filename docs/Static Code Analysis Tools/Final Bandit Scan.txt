@@ -1,0 +1,360 @@
+[main]  INFO    profile include tests: None
+[main]  INFO    profile exclude tests: None
+[main]  INFO    cli include tests: None
+[main]  INFO    cli exclude tests: None
+[main]  INFO    running on Python 3.11.1
+[node_visitor]  WARNING Unable to find qualified name for module: app.py
+Run started:2022-12-25 19:48:08.664627
+
+Test results:
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   Location: app.py:11:0
+   More Info: https://bandit.readthedocs.io/en/1.7.4/blacklists/blacklist_imports.html#b404-import-subprocess
+10      import uuid
+11      import subprocess
+12
+13      policy = PasswordPolicy.from_names(
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'secret key'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   Location: app.py:21:17
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b105_hardcoded_password_string.html
+20      app = Flask(__name__)
+21      app.secret_key = "secret key"
+22      COOKIE_TIMEOUT = 60 * 10
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:65:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+64          cur = conn.cursor()
+65          cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+66          row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:90:12
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+89          # Create SQL query (SQL INJECTABLE)
+90          query = f"SELECT username FROM users WHERE username='{username}'"
+91
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   Location: app.py:94:13
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+93          cmd = "grep %s pass.txt" % password
+94          result = subprocess.run(cmd, shell=True, capture_output=True)
+95
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:111:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+110         else:
+111             query = f"INSERT INTO users (username, password) VALUES ('{username}', '{password}')"
+112             cur.execute(query)
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:138:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+137         cur = conn.cursor()
+138         cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+139         row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:176:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+175         cur = conn.cursor()
+176         cur.execute(f"SELECT username FROM users WHERE username=%s", (username,))
+177         user_check = cur.fetchone()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:186:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+185             token = str(uuid.uuid4())
+186             cur.execute(f"INSERT INTO users (username, password, token, salt) VALUES (%s, %s, %s, %s)", (username, hashed_password, token, salt))
+187             conn.commit()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:197:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+196         cur = conn.cursor()
+197         cur.execute(f"SELECT username, token, secret FROM users WHERE username=%s", (username,))
+198         fetched_token = cur.fetchone()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:223:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+222             cur = conn.cursor()
+223             cur.execute(f"UPDATE users SET secret = %s WHERE username = %s", (secret, username))
+224             conn.commit()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:260:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+259         cur = conn.cursor()
+260         cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+261         row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:289:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+288             # Create SQL query (SQL INJECTABLE)
+289             query = f"SELECT * FROM users WHERE username='{username}'"
+290
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:302:28
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+301                 if account[0] == None and account[1] != None:
+302                     cur.execute(f"DELETE FROM users WHERE token=%s", (account[1], ))
+303                     conn.commit()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:349:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+348         cur = conn.cursor()
+349         cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+350         row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:378:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+377         cur = conn.cursor()
+378         cur.execute(f"SELECT * FROM users WHERE username=%s", (username,))
+379         row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:386:24
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+385             if account[0] == None and account[1] != None:
+386                 cur.execute(f"DELETE FROM users WHERE token=%s", (account[1], ))
+387                 conn.commit()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:462:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+461             cur = conn.cursor()
+462             cur.execute(f"SELECT password FROM users WHERE username=%s", (username, ))
+463             row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:478:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+477         cur = conn.cursor()
+478         cur.execute(f"SELECT * FROM messages")
+479         rows = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:490:12
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+489         # Create SQL query (SQL INJECTABLE)
+490         query = f"INSERT INTO messages (author, message) VALUES ('{request.cookies.get('username')}', '{message}')"
+491
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:499:12
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+498         # Retrieve messages from database
+499         query = f"SELECT * FROM messages"
+500         cur.execute(query)
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:525:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+524             cur = conn.cursor()
+525             cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+526             row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:541:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+540         cur = conn.cursor()
+541         cur.execute(f"SELECT * FROM messages")
+542         rows = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:556:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+555         cur = conn.cursor()
+556         cur.execute(f"INSERT INTO messages (author, message) VALUES (%s, %s)", (request.cookies.get('username'), message))
+557         conn.commit()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:560:16
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+559         # Retrieve messages from database
+560         cur.execute(f"SELECT * FROM messages")
+561         rows = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:592:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+591             cur = conn.cursor()
+592             cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+593             row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:682:14
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+681         if show_desc == '1':
+682             sql = f"SELECT title, authors, category, price, description FROM books {where_clause}"
+683         else:
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:684:14
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+683         else:
+684             sql = f"SELECT title, authors, category, price FROM books {where_clause}"
+685         if order_by == 'relevance':
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:718:20
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+717             cur = conn.cursor()
+718             cur.execute(f"SELECT password FROM users WHERE username=%s", (username,))
+719             row = cur.fetchall()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:824:14
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+823         if show_desc == '1':
+824             sql = f"SELECT title, authors, category, price, description FROM books {where_clause}"
+825         else:
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   Location: app.py:826:14
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b608_hardcoded_sql_expressions.html
+825         else:
+826             sql = f"SELECT title, authors, category, price FROM books {where_clause}"
+827         if order_by == 'relevance':
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'ddss-database-assignment-2'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   Location: app.py:850:9
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b106_hardcoded_password_funcarg.html
+849     def get_db():
+850         db = psycopg2.connect(user = "ddss-database-assignment-2",
+851                     password = "ddss-database-assignment-2",
+852                     host = "db",
+853                     port = "5432",
+854                     database = "ddss-database-assignment-2")
+855         return db
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   Location: app.py:884:17
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b104_hardcoded_bind_all_interfaces.html
+883
+884         app.run(host="0.0.0.0", threaded=True)
+
+--------------------------------------------------
+
+Code scanned:
+        Total lines of code: 601
+        Total lines skipped (#nosec): 0
+
+Run metrics:
+        Total issues (by severity):
+                Undefined: 0
+                Low: 3
+                Medium: 29
+                High: 1
+        Total issues (by confidence):
+                Undefined: 0
+                Low: 9
+                Medium: 22
+                High: 2
+Files skipped (0):

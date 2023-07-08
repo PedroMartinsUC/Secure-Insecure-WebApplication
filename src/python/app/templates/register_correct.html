@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DDSS PA2 - Part 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+            <h1>Design and Development of Secure Software</h1>
+            <h2>Practical Assignment #2 - Part 1.4 (Register)</h2>
+            <div align="center">
+                DISCLAIMER: This code is to be used in the scope of the <em>DDSS</em> course.
+                <b>Important:</b> these sources are merely suggestions of implementations. 
+                You should modify everything you deem as necessary and be responsible for all the content that is delivered.
+                <em>The contents of this repository do not replace the proper reading of the assignment description.</em>
+            </div>
+            <br>
+            <br>
+            <h1>User Registration</h1>
+            <form action="/register_correct.html" method="post">
+                <table  style="width: 350px ; background-color:#f19191" border="1" cellpadding="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><b>Part 4.1 - Correct Register Form</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label>Username</label></td>
+                            <td><input type="text" placeholder="Enter Username" name="c_username" required></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password</label> </td>
+                            <td><input type="password" placeholder="Enter Password" name="c_password" required> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Confirm Password</label> </td>
+                            <td><input type="password" placeholder="Enter Password" name="c_confirm_password" required> </td>
+                        </tr>
+                        <tr>
+                            <td align="right" colspan="2"><button type="submit">Login</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div align="center" style="color: red" class="alert alert-{{ category }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </body>
+</html>

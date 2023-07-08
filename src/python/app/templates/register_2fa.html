@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DDSS PA2 - Part 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+            <h1>Design and Development of Secure Software</h1>
+            <h2>Practical Assignment #2 - Part 1.4 (Register)</h2>
+            <div align="center">
+                DISCLAIMER: This code is to be used in the scope of the <em>DDSS</em> course.
+                <b>Important:</b> these sources are merely suggestions of implementations. 
+                You should modify everything you deem as necessary and be responsible for all the content that is delivered.
+                <em>The contents of this repository do not replace the proper reading of the assignment description.</em>
+                </div>
+                    <form>
+                    <div>
+                        <h3>Please follow the instructions:</h3>
+                        <a>- Download <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en&gl=US" target="_blank">Google Authenticator</a> on your mobile device.</a><br>
+                        <a>- Click on the "+" icon in the corner and select the <strong>setup key</strong> method.</a><br>
+                        <a>- Provide a name of your choice and the secret token displayed below.</a><br>
+                        <a>- Select the time-based authentication option.</a><br>
+                        <a>- Introduce here the OTP generated to confirm the 2FA.</a><br>
+                    </div>
+                    <br>
+                    <br>    
+                    <div class="form-group">
+                        <label for="secret">Secret Token:</label>
+                        <input type="text" class="form-control" id="secret" value="{{ secret }}" readonly>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" onclick="copySecret()">Copy Secret</button>
+                    </div>
+                    </form>
+                </div>
+                <br>
+                <div align="center" class="col-lg-7">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <form method="POST">
+                    <div class="form-group">
+                        <label for="otp">Generated OTP:</label>
+                        <input type="hidden" name="secret" value="{{ secret }}" required>
+                        <input type="number" class="form-control" id="otp" name="otp" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Authenticate User</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </body>
+    <script>
+        function copySecret() {
+        var copyText = document.getElementById("secret");
+    
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+    
+        document.execCommand("copy");
+    
+        alert("Successfully copied the secret token!");
+        }
+    </script>
+</html>  

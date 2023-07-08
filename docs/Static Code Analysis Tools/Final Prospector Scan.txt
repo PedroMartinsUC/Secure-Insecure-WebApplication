@@ -1,0 +1,170 @@
+app.py
+  Line: 1
+    pylint: unused-import / Unused import json
+  Line: 2
+    pylint: import-error / Unable to import 'flask'
+    pylint: unused-import / Unused g imported from flask
+  Line: 3
+    pylint: import-error / Unable to import 'password_strength'
+  Line: 6
+    pylint: import-error / Unable to import 'psycopg2'
+    pylint: multiple-imports / Multiple imports on one line (logging, psycopg2)
+  Line: 9
+    pylint: import-error / Unable to import 'pyotp'
+  Line: 48
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 65
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 68
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 69
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 93
+    pylint: consider-using-f-string / Formatting a regular string which could be a f-string (col 10)
+  Line: 94
+    pylint: subprocess-run-check / Using subprocess.run without explicitly set `check` is not recommended. (col 13)
+  Line: 107
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 121
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 138
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 141
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 142
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 176
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 180
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 186
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 197
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 201
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 211
+    pylint: unused-argument / Unused argument 'token' (col 32)
+  Line: 218
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 223
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 243
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 260
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 263
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 264
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 301
+    pylint: singleton-comparison / Comparison 'account[0] == None' should be 'account[0] is None' (col 15)
+  Line: 302
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 28)
+  Line: 306
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 315
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 332
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 349
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 353
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 354
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 15)
+  Line: 378
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 385
+    pylint: singleton-comparison / Comparison 'account[0] == None' should be 'account[0] is None' (col 11)
+  Line: 386
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 24)
+  Line: 390
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 399
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 403
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 405
+    pycodestyle: E501 / line too long (178 > 159 characters) (col 160)
+  Line: 462
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 478
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 499
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 12)
+  Line: 525
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 541
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 556
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 560
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 16)
+  Line: 592
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 610
+    pylint: too-many-locals / Too many local variables (24/15)
+    mccabe: MC0001 / part3_vulnerable_form is too complex (23)
+  Line: 651
+    pylint: consider-using-in / Consider merging these comparisons with 'in' by using 'match_method in ('any', 'all')'. Use a set instead if elements are hashable. (col 15)
+  Line: 655
+    pycodestyle: E501 / line too long (175 > 159 characters) (col 160)
+  Line: 661
+    pycodestyle: E501 / line too long (213 > 159 characters) (col 160)
+  Line: 718
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 20)
+  Line: 736
+    pylint: too-many-locals / Too many local variables (25/15)
+    mccabe: MC0001 / part3_correct_form is too complex (24)
+  Line: 761
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 29)
+  Line: 764
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 29)
+  Line: 767
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 29)
+  Line: 771
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 774
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 777
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 780
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 783
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 786
+    pylint: consider-using-in / Consider merging these comparisons with 'in' by using 'match_method in ('any', 'all')'. Use a set instead if elements are hashable. (col 15)
+  Line: 790
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 34)
+  Line: 797
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 37)
+  Line: 800
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 29)
+  Line: 803
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 29)
+  Line: 808
+    pylint: too-many-boolean-expressions / Too many boolean expressions in if statement (6/5) (col 9)
+    pycodestyle: E501 / line too long (165 > 159 characters) (col 160)
+  Line: 811
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 814
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 33)
+  Line: 831
+    pylint: f-string-without-interpolation / Using an f-string that does not have any interpolated variables (col 11)
+  Line: 865
+    pycodestyle: E305 / expected 2 blank lines after class or function definition, found 5 (col 1)
+
+
+
+Check Information
+=================
+         Started: 2022-12-25 19:17:41.446799
+        Finished: 2022-12-25 19:17:42.337174
+      Time Taken: 0.89 seconds
+       Formatter: grouped
+        Profiles: default, no_doc_warnings, no_test_warnings, strictness_medium, strictness_high, strictness_veryhigh, no_member_warnings
+      Strictness: None
+  Libraries Used: flask
+       Tools Run: dodgy, mccabe, profile-validator, pycodestyle, pyflakes, pylint
+  Messages Found: 80
